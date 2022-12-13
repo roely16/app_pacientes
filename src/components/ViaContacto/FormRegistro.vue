@@ -68,7 +68,6 @@
                 this.axios
 				.get(process.env.VUE_APP_API_URL + "detalle_via_contacto/" + this.idVia)
 				.then(response => {
-                    console.log(response.data)
                     this.via_contacto = response.data
                 });
 

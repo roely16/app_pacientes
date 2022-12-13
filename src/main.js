@@ -39,13 +39,19 @@ import {
 	faEye,
 	faEyeSlash,
 	faSignInAlt,
-	faUsers
+	faUsers,
+	faExclamationTriangle,
+	faAngleDown,
+	faAngleUp,
+	faGripHorizontal,
+	faDownload,
+	faUpload
 } from '@fortawesome/free-solid-svg-icons'
 import {
 	FontAwesomeIcon
 } from '@fortawesome/vue-fontawesome'
 
-library.add(faEdit, faTrash, faSearch, faPlus, faTimesCircle, faSave, faInfoCircle, faUser, faEye, faEyeSlash, faSignInAlt, faUsers)
+library.add(faEdit, faTrash, faSearch, faPlus, faTimesCircle, faSave, faInfoCircle, faUser, faEye, faEyeSlash, faSignInAlt, faUsers, faExclamationTriangle, faAngleDown, faAngleUp, faGripHorizontal, faDownload, faUpload)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

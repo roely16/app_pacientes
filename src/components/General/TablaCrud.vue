@@ -24,7 +24,7 @@
 					:items="items" 
 					:fields="fields"
 					show-empty
-					empty-text="Aún no se han registrado medios de contacto."
+					:empty-text="table_empty_text"
 					empty-filtered-text="No se han encontrado registros que coincidan con su búsqueda."
                     :perPage="perPage"
 					:currentPage="currentPage"
@@ -44,13 +44,15 @@
                         </b-button>
                     </template>
 
+					
+
 				</b-table>
 			</b-col>
 		</b-row>
 
-		<b-row v-if="rows > perPage">
+		<b-row v-if="items.length > perPage">
 			<b-col>
-				<b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage" align="center"></b-pagination>
+				<b-pagination v-model="currentPage" :total-rows="items.length" :per-page="perPage" align="center"></b-pagination>
 			</b-col>
 		</b-row>
 
@@ -86,6 +88,10 @@
 			deletePost: {
 				type: Boolean,
 				default: false
+			},
+			table_empty_text: {
+				type: String,
+				default: 'Aún no existen registros.'
 			}
 		},
         data(){

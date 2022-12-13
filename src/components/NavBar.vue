@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-navbar toggleable="lg" type="dark" variant="dark">
+        <b-navbar toggleable="lg" type="dark" variant="dark" fixed="top" sticky>
 			<b-navbar-brand href="#">MONITOREO</b-navbar-brand>
 
 			<b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -11,9 +11,6 @@
 			<!-- Right aligned nav items -->
 			<b-navbar-nav class="ml-auto">
 				
-
-				
-
 				<b-nav-item-dropdown right>
 					<!-- Using 'button-content' slot -->
 					<template v-slot:button-content>

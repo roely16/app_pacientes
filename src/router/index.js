@@ -23,6 +23,21 @@ import Reportes from '../views/Reportes.vue'
 // Metas
 import Metas from '../views/Metas.vue'
 
+// Reuniones Locales
+import ReunionesLocales from '../views/ReunionesLocales.vue'
+
+// Convivencias 
+import Convivencias from '../views/Convivencias.vue'
+
+// Organizacion
+import Organizacion from '../views/Organizaciones.vue'
+
+// Vecinos
+import VisitasVecinos from '../views/VisitasVecinos.vue'
+
+// Calendario
+import Calendario from '../views/Calendario.vue'
+
 // eslint-disable-next-line no-unused-vars
 import store from '../store/index.js';
 
@@ -85,6 +100,35 @@ const routes = [
 				name: 'metas',
 				component: Metas
 			},
+			// Reuniones Locales 
+			{
+				path: '/home/reuniones/:id?',
+				name: 'reuniones',
+				component: ReunionesLocales
+			},
+			// Convivencias
+			{
+				path: '/home/convivencias/:id?',
+				name: 'convivencias',
+				component: Convivencias
+			},
+			// Organización
+			{
+				path: '/home/organizaciones/:id?',
+				name: 'organizaciones',
+				component: Organizacion
+			},
+			{
+				path: '/home/visitas/:id?',
+				name: 'visitas',
+				component: VisitasVecinos
+			},
+			// 
+			{
+				path: 'home/calendario',
+				name: 'calendario',
+				component: Calendario
+			}
 		]
 	}
 ]

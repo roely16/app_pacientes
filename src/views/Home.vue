@@ -3,9 +3,10 @@
         <NavBar />
 
         <!-- Home -->
-        <b-container v-if="home">
-            <b-row class="mt-4">
-                <b-col sm="12" md="6" lg="4">
+        <b-container fluid v-if="home">
+            <b-row class="mt-4" v-if="categorias.length > 0">
+
+                <b-col sm="12" md="6" lg="4" v-for="( categoria, key ) in categorias" :key="key">
                     <b-card
                         class="mb-2 text-primary"
                         no-body	
@@ -13,63 +14,14 @@
                         <b-card-body class="pt-2">
                             
                             <b-card-text>
-                                Contactos
+                                {{ categoria.nombre }}
                             </b-card-text>
                             <b-row>
                                 <b-col cols="6">
-                                    <b-img  width="100" src="./img/contacts.png" fluid></b-img>
+                                    <b-img  width="100" :src="'./img/' + categoria.icon" fluid></b-img>
                                 </b-col>
-                                <b-col>
-                                    <b-button block size="sm" variant="outline-primary" :to="{ name: 'contactos' }">Administración</b-button>
-                                    
-                                </b-col>
-                            </b-row>
-                        </b-card-body>
-                    </b-card>
-                </b-col>
-
-                <b-col sm="12" md="6" lg="4">
-                    <b-card
-                        class="mb-2 text-primary"
-                        no-body
-                    >
-                        <b-card-body class="pt-2">
-                             <b-card-text>
-                                Indicadores
-                            </b-card-text>
-                            <b-row>
-                                <b-col cols="6">
-                                    <b-img  width="100" src="./img/dashboard.png" fluid></b-img>
-                                </b-col>
-                                <b-col>
-                                    <b-button block size="sm" variant="outline-primary" :to="{ name: 'indicadores' }">Indicadores</b-button>
-                                    <b-button block size="sm" variant="outline-primary">Reportes</b-button>
-                                </b-col>
-                            </b-row>
-                        </b-card-body>
-                    </b-card>
-                </b-col>
-
-                <b-col sm="12" md="6" lg="4">
-                    <b-card
-                        class="mb-2 text-primary"
-                        no-body
-                    >   
-                        <b-card-body class="pt-2">
-                            <b-card-text>
-                                Configuración
-                            </b-card-text>
-                            <b-row>
-                                <b-col cols="6">
-                                    <b-img  width="100" src="./img/system.png" fluid></b-img>
-                                </b-col>
-                                <b-col>
-                                    <b-button block size="sm" variant="outline-primary" :to="{ name: 'usuarios' }">Usuarios 
-                                        <!-- <font-awesome-icon icon="users" /> -->
-                                    </b-button>
-                                    <b-button block size="sm" variant="outline-primary" :to="{ name: 'catalogos' }">Catálogos</b-button>
-                                    <b-button block size="sm" variant="outline-primary" :to="{ name: 'metas' }">Metas</b-button>
-                                    
+                                <b-col >
+                                    <b-button v-for="(opcion, key) in categoria.opciones" :key="key" block size="sm" variant="outline-primary" :to="{ name: opcion.url, params: {id: opcion.id_clasificacion} }" >{{ opcion.nombre }}</b-button>                                    
                                 </b-col>
                             </b-row>
                         </b-card-body>
@@ -77,10 +29,21 @@
                 </b-col>
 
             </b-row>
+
+            <b-row class="mt-4" v-if="categorias.length <= 0">
+                <b-col>
+                    <b-alert variant="danger" class="text-center" show>
+                        <h2>Solicite al Administración Acceso a la Plataforma 
+                            <font-awesome-icon icon="exclamation-triangle" />
+                        </h2>
+                    </b-alert>
+                </b-col>
+            </b-row>
+
         </b-container>
 
         <!-- Others -->
-        <b-container v-if="!home">
+        <b-container fluid v-if="!home">
             <router-view ></router-view>
         </b-container>
 
@@ -95,6 +58,15 @@
         components: {
             NavBar
         },
+        data(){
+
+            return{
+
+                categorias: []
+
+            }
+
+        },
         methods: {
 
             obtener_menu(){
@@ -105,7 +77,7 @@
 				.get(process.env.VUE_APP_API_URL + "menu_usuario/" + usuario.id)
 				.then(response => {
                     
-                    console.log(response.data)
+                    this.categorias = response.data
 					
 				});
 

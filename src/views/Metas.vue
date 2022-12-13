@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-container>
+        <b-container fluid>
             <b-row class="mt-4">
                 <b-col>
                     <b-breadcrumb :items="items"></b-breadcrumb>
@@ -85,7 +85,6 @@
 				.then(response => {
                     this.metas = response.data.items
                     this.fields = response.data.fields
-					console.log(response.data)
 				});
 
             }

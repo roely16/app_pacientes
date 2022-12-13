@@ -42,7 +42,7 @@
 
         <Modal :showModal="showModal" :titleModal="titleModal" @closeModal="closeModal">
             <template v-slot:form>
-                <FormAgregarAcceso />
+                <FormAgregarAcceso @listar="listar" @closeModal="closeModal" />
             </template>
         </Modal>
     </div>    

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<b-container>
+		<b-container fluid>
 
 			<b-row class="mt-4">
                 <b-col>
@@ -23,9 +23,9 @@
 					<b-button variant="primary" @click="() => {
 						showModal = true
 						editMode = false
-						titleModal = 'Agregar Contacto'
+						titleModal = 'Agregar Paciente'
 					}">
-						Agregar
+						Agregar Paciente
 						<font-awesome-icon icon="plus" />
 					</b-button>
 				</b-col>
@@ -57,19 +57,20 @@
 							</div>
 						</template>
 
-						<template v-slot:cell(direccion)="data">
-							{{ data.item.direccion }} Zona
-							{{ data.item.zona }}
+						<template v-slot:cell(estado)="data">							
+							<b-badge v-if="data.item.status == 'S'" variant="warning">SÍNTOMA</b-badge>
+
+							<b-badge v-if="data.item.status == 'C'" variant="danger">CONFIRMADO</b-badge>
 						</template>
 
 						<template v-slot:cell(clasificacion)="data">
-							<div :style="'background-color: ' + data.item.color + '; width: 20px; height: 20px; display: inline-block'" v-b-tooltip.hover :title="data.item.nombre_clasificacion"></div>
+							<div :style="'background-color: ' + data.item.color + '; width: 20px; height: 20px; display: inline-block'"></div>
 						</template>
 
 						<template v-slot:cell(action)="data">
-							<b-button variant="secondary" size="sm" class="mr-2" :to="{ name: 'detalle_contacto', params: {id: data.item.id}}">
+							<!-- <b-button variant="secondary" size="sm" class="mr-2" :to="{ name: 'detalle_contacto', params: {id: data.item.id}}">
 								<font-awesome-icon icon="info-circle" />
-							</b-button>
+							</b-button> -->
 							<b-button variant="primary" size="sm" class="mr-2" @click="detalle(data.item.id)">
 								<font-awesome-icon icon="edit" />
 							</b-button>
@@ -122,7 +123,7 @@
                         href: '#/home'
                     },
                     {
-                        text: 'Contactos',
+                        text: 'Pacientes',
                         active: true
                     }
                 ],
@@ -138,7 +139,6 @@
 				this.axios
 				.get(process.env.VUE_APP_API_URL + "listar_personas/" + usuario.id)
 				.then(response => {
-
 					this.personas = response.data.items;
 					this.fields = response.data.fields;
 					this.rows = this.personas.length;
@@ -183,7 +183,7 @@
 				this.showModal = true
 				this.editMode = true
 				this.id_persona = id
-				this.titleModal = 'Editar Contacto'
+				this.titleModal = 'Editar Paciente'
 			},
 			onFiltered(filteredItems) {
 				// Trigger pagination to update the number of buttons/pages due to filtering

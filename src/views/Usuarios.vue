@@ -1,6 +1,6 @@
 <template>
     <div>
-		<b-container>
+		<b-container fluid>
 			<b-row class="mt-4">
 				<b-col>
 					<b-breadcrumb :items="items"></b-breadcrumb>
@@ -83,8 +83,10 @@
 			
 			listar(){
 
+				let usuario = JSON.parse(localStorage.getItem('usuario'))
+
 				this.axios
-				.get(process.env.VUE_APP_API_URL + "obtener_usuarios")
+				.get(process.env.VUE_APP_API_URL + "obtener_usuarios/" + usuario.id)
 				.then(response => {
 					this.items_tabla = response.data.items
 					this.fields_tabla = response.data.fields

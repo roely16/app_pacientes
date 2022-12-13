@@ -20,7 +20,7 @@
                             <b-tab title="Medio de Contacto" active>
                                 <Tabla />
                             </b-tab>
-                            <b-tab title="Historial"><p>Historial</p></b-tab>
+                            <!-- <b-tab title="Historial"><p>Historial</p></b-tab> -->
                         </b-tabs>
                     </b-card>
                 </b-col>

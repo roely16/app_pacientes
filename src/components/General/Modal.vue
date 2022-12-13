@@ -36,7 +36,9 @@
 		},	
 		watch: {
 			showModal(val){
+				
 				this.show = val
+				
 			}
 		},
     }

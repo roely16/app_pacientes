@@ -1,6 +1,6 @@
 module.exports = {
     publicPath: process.env.NODE_ENV === 'production' ?
-        '/apps/app_crm/' : '/',
+        '/apps/conavid19/pacientes/' : '/',
     devServer: {
         host: 'localhost'
     }
