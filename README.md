@@ -1,4 +1,6 @@
-# app_crm_2
+# CRM para el registro de pacientes 
+
+Aplicación utilizada durante la atención de la pandemia de COVID-19, mediante la cuál se da seguimiento a todos los posibles casos en la ciudad. 
 
 ## Project setup
 ```
